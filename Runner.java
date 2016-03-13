@@ -13,7 +13,7 @@ public class Runner extends Applet {
 		drawSquare1(g, 1024, 768);
 	}
 
-	//Middle black square
+	//Starting black square
 	public void drawSquare1(Graphics g, int maxX, int maxY) {
 		int midX = maxX / 2;// 512
 		int midY = maxY / 2;// 384
@@ -23,7 +23,7 @@ public class Runner extends Applet {
 		int tlY = midY - (startHeight / 2);// 288
 		g.fillRect(tlX, tlY, startWidth, startHeight);
 
-		// Draws original 4 to the side
+		// Draws the original 4 to the side
 		g.setColor(Color.red);
 		drawFourSquares(g, tlX - startWidth / 2, tlY - startHeight / 2, startWidth / 2, startHeight / 2, 1);
 		g.setColor(Color.blue);
@@ -42,13 +42,13 @@ public class Runner extends Applet {
 			endDelay = System.nanoTime();
 	}
 
-	// Recursion and switch case to see if what rectangle it is and draw to only sides that are necessary
+	// Determines what rectangle it is and draws only sides that are necessary
 	public void drawFourSquares(Graphics g, int x, int y, int w, int h, int side) {
 		if (w >= 1) {
 			g.fillRect(x, y, w, h);
 
 			switch (side) {
-			// Draws in the top left
+			// top left
 			case 1:
 				g.setColor(Color.red);
 				drawFourSquares(g, x - w / 2, y - h / 2, w / 2, h / 2, 1);
@@ -57,7 +57,7 @@ public class Runner extends Applet {
 				g.setColor(Color.green);
 				drawFourSquares(g, x - w / 2, y + h, w / 2, h / 2, 4);
 				break;
-			// Draws in the top right
+			// top right
 			case 2:
 				g.setColor(Color.red);
 				drawFourSquares(g, x - w / 2, y - h / 2, w / 2, h / 2, 1);
@@ -66,7 +66,7 @@ public class Runner extends Applet {
 				g.setColor(Color.yellow);
 				drawFourSquares(g, x + w, y + h, w / 2, h / 2, 3);
 				break;
-			// Draws in the bottom right
+			// bottom right
 			case 3:
 				g.setColor(Color.blue);
 				drawFourSquares(g, x + w, y - h / 2, w / 2, h / 2, 2);
@@ -75,7 +75,7 @@ public class Runner extends Applet {
 				g.setColor(Color.green);
 				drawFourSquares(g, x - w / 2, y + h, w / 2, h / 2, 4);
 				break;
-			// Draws in the bottom left
+			// bottom left
 			case 4:
 				g.setColor(Color.red);
 				drawFourSquares(g, x - w / 2, y - h / 2, w / 2, h / 2, 1);
